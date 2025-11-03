@@ -1,0 +1,466 @@
+/* การตั้งค่าเริ่มต้นสำหรับทุกองค์ประกอบ */
+
+* {
+    /* รีเซ็ต Margin และ Padding เริ่มต้น */
+    margin: 0;
+    padding: 0;
+    /* กำหนดให้การคำนวณขนาดรวม Border และ Padding ด้วย */
+    box-sizing: border-box;
+}
+
+
+/* การจัดรูปแบบพื้นฐานของ Body (พื้นหลังและฟอนต์) */
+
+body {
+    /* ใช้ฟอนต์ Prompt เป็นหลัก และฟอนต์สำรองอื่นๆ */
+    font-family: 'Prompt', sans-serif;
+    /* สีพื้นหลังอ่อนโยน ดูมินิมอล */
+    background-color: #f4f7f6;
+    /* จัดองค์ประกอบให้อยู่ตรงกลางหน้าจอในแนวตั้งและแนวนอน (ถ้าจอใหญ่) */
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    /* ความสูงขั้นต่ำเต็มหน้าจอ */
+    padding: 20px;
+    /* ระยะห่างรอบข้าง */
+}
+
+
+/* ภาชนะหลักสำหรับเนื้อหาทั้งหมด */
+
+.main-container {
+    /* กำหนดความกว้างสูงสุดเพื่อให้ดูไม่กว้างเกินไปบนจอใหญ่ */
+    max-width: 600px;
+    /* ให้ขยายเต็มความกว้างของจอในขีดจำกัดสูงสุด */
+    width: 100%;
+    /* จัดเรียงองค์ประกอบในแนวตั้ง */
+    display: flex;
+    flex-direction: column;
+    /* เว้นระยะห่างระหว่างส่วนต่างๆ */
+    gap: 25px;
+}
+
+
+/* ส่วนหัวของแอปพลิเคชัน */
+
+.app-header h1 {
+    /* สีข้อความหลัก */
+    color: #2c3e50;
+    /* จัดให้อยู่ตรงกลาง */
+    text-align: center;
+    /* ขนาดตัวอักษรใหญ่ขึ้น */
+    font-size: 1.8rem;
+    /* น้ำหนักตัวอักษรให้ดูเด่น */
+    font-weight: 600;
+}
+
+
+/* รูปแบบการ์ด (Card) สำหรับฟอร์มและรายการแจ้งเตือน */
+
+.notification-form-card,
+.notification-list-section {
+    /* สีพื้นหลังการ์ดเป็นสีขาว */
+    background-color: #ffffff;
+    /* เงาเล็กน้อยเพื่อให้ดูมีมิติ (ทันสมัยและนุ่มนวล) */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    /* มุมโค้งมน */
+    border-radius: 12px;
+    /* ระยะห่างภายใน */
+    padding: 25px;
+}
+
+
+/* หัวข้อรองภายในส่วนต่างๆ */
+
+h2 {
+    /* -------------------------------------- */
+    /* -------------------------------------- */
+    /* สีหัวข้อ */
+    color: #34495e;
+    /* ขีดเส้นใต้เล็กน้อย */
+    border-bottom: 2px solid #ecf0f1;
+    /* ระยะห่างใต้หัวข้อ */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+
+/* กลุ่มควบคุมฟอร์ม (ช่องกรอกข้อมูลแต่ละช่อง) */
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+
+/* ป้ายกำกับ (Label) ของช่องกรอกข้อมูล */
+
+label {
+    /* แสดงเป็นบล็อกเพื่อให้ขึ้นบรรทัดใหม่ */
+    display: block;
+    /* สีข้อความเข้ม */
+    color: #34495e;
+    /* ขนาดและน้ำหนักตัวอักษร */
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+
+/* ช่องกรอกข้อมูล (Input) และ Textarea */
+
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+    /* ขยายเต็มความกว้างของภาชนะ */
+    width: 100%;
+    /* ระยะห่างภายใน */
+    padding: 10px 15px;
+    /* เส้นขอบบางๆ สีเทาอ่อน */
+    border: 1px solid #bdc3c7;
+    /* มุมโค้งมนเล็กน้อย */
+    border-radius: 6px;
+    /* ขนาดตัวอักษร */
+    font-size: 1rem;
+    /* ใช้ฟอนต์ Prompt ในช่องกรอกด้วย */
+    font-family: 'Prompt', sans-serif;
+    /* การเปลี่ยนรูปแบบอย่างราบรื่นเมื่อมีการโต้ตอบ */
+    transition: border-color 0.3s;
+}
+
+
+/* เมื่อช่องกรอกข้อมูลถูกเลือก (Focus) */
+
+input:focus,
+textarea:focus,
+select:focus {
+    /* ลบเส้นขอบสีฟ้าเริ่มต้นของเบราว์เซอร์ */
+    outline: none;
+    /* เปลี่ยนสีเส้นขอบเป็นสีหลัก (Primary Color) */
+    border-color: #3498db;
+    /* เงาเล็กน้อยเพื่อเน้น */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+
+/* จัดกลุ่ม Date และ Time ให้อยู่ในบรรทัดเดียวกัน */
+
+.date-time-group {
+    /* ใช้ Flexbox จัดวาง */
+    display: flex;
+    /* ระยะห่างระหว่างช่อง */
+    gap: 15px;
+}
+
+
+/* ให้แต่ละช่องในกลุ่ม Date/Time แบ่งความกว้างเท่าๆ กัน */
+
+.date-time-group>div {
+    flex: 1;
+}
+
+
+/* รูปแบบปุ่มพื้นฐาน */
+
+.btn {
+    /* ลบเส้นขอบเริ่มต้น */
+    border: none;
+    /* มุมโค้งมน */
+    border-radius: 6px;
+    /* ระยะห่างภายใน */
+    padding: 10px 20px;
+    /* ขนาดตัวอักษร */
+    font-size: 1rem;
+    /* น้ำหนักตัวอักษร */
+    font-weight: 600;
+    /* เปลี่ยนเคอร์เซอร์เป็นรูปมือเมื่อวางเมาส์ */
+    cursor: pointer;
+    /* การเปลี่ยนรูปแบบอย่างราบรื่น */
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+
+/* ปุ่มหลัก (Primary Button - เช่น ปุ่ม "ตั้งค่า") */
+
+.primary-btn {
+    /* สีพื้นหลังที่โดดเด่นแต่สบายตา */
+    background-color: #3498db;
+    /* สีตัวอักษรเป็นสีขาว */
+    color: white;
+    /* ขยายเต็มความกว้างของฟอร์ม */
+    width: 100%;
+    /* ระยะห่างด้านบน */
+    margin-top: 10px;
+}
+
+
+/* เมื่อวางเมาส์เหนือปุ่มหลัก */
+
+.primary-btn:hover {
+    /* สีเข้มขึ้นเล็กน้อย */
+    background-color: #2980b9;
+    /* ขยับปุ่มลงเล็กน้อยเมื่อคลิก (เพื่อ Feedback) */
+}
+
+.primary-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* -------------------------------------- */
+
+
+/* รูปแบบรายการแจ้งเตือน (List Item) */
+
+
+/* -------------------------------------- */
+
+
+/* รายการแจ้งเตือนแต่ละรายการ */
+
+.notification-item {
+    /* ใช้ Flexbox เพื่อจัดวางรายละเอียดและปุ่มควบคุม */
+    display: flex;
+    /* จัดช่องว่างระหว่างสองส่วน */
+    justify-content: space-between;
+    /* จัดแนวตั้งให้อยู่ตรงกลาง */
+    align-items: center;
+    /* ระยะห่างภายใน */
+    padding: 15px 10px;
+    /* เส้นขอบด้านล่างเพื่อแบ่งรายการ */
+    border-bottom: 1px solid #ecf0f1;
+    /* การเปลี่ยนรูปแบบอย่างราบรื่น */
+    transition: background-color 0.3s, opacity 0.3s;
+}
+
+
+/* ลบเส้นขอบด้านล่างของรายการสุดท้าย */
+
+.notification-item:last-child {
+    border-bottom: none;
+}
+
+
+/* เมื่อวางเมาส์เหนือรายการ */
+
+.notification-item:hover {
+    background-color: #f9f9f9;
+}
+
+
+/* รายละเอียดการแจ้งเตือน */
+
+.item-details {
+    /* ให้รายละเอียดใช้พื้นที่มากที่สุด */
+    flex-grow: 1;
+}
+
+
+/* เนื้อหาหลักของการแจ้งเตือน */
+
+.item-content {
+    /* สีตัวอักษรเข้ม */
+    color: #2c3e50;
+    /* น้ำหนักตัวอักษร */
+    font-weight: 400;
+    /* ขนาดตัวอักษร */
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+
+/* กำหนดการตั้งค่า (วันที่/เวลา/ความถี่) */
+
+.item-schedule {
+    /* สีตัวอักษรจางลง */
+    color: #7f8c8d;
+    /* ขนาดตัวอักษรเล็กกว่า */
+    font-size: 0.85rem;
+}
+
+
+/* ส่วนควบคุม (Toggle Switch และ ปุ่มยกเลิก) */
+
+.item-controls {
+    /* ใช้ Flexbox จัดวางปุ่มควบคุม */
+    display: flex;
+    /* จัดแนวตั้งให้อยู่ตรงกลาง */
+    align-items: center;
+    /* ระยะห่างระหว่างปุ่ม */
+    gap: 15px;
+}
+
+
+/* ปุ่มรอง (Secondary Button - เช่น ปุ่ม "ยกเลิก") */
+
+.secondary-btn {
+    /* สีพื้นหลังเป็นสีขาว */
+    background-color: transparent;
+    /* สีขอบและตัวอักษร */
+    color: #c0392b;
+    /* ลบขอบ */
+    border: none;
+    /* ระยะห่างที่เล็กลง */
+    padding: 5px 10px;
+}
+
+.secondary-btn:hover {
+    /* สีพื้นหลังจางๆ เมื่อวางเมาส์ */
+    background-color: #fdeaea;
+    color: #e74c3c;
+}
+
+
+/* รูปแบบรายการที่ **ปิดใช้งาน** (Inactive) 
+
+.notification-item.inactive {
+    /* ทำให้รายการดูจางลง 
+    opacity: 0.6;
+}
+
+.notification-item.inactive .item-content,
+.notification-item.inactive .item-schedule {
+    /* สีข้อความที่ดูหม่นลง 
+    color: #95a5a6;
+}
+
+
+/* -------------------------------------- */
+
+
+/* -------------------------------------- */
+
+
+/* รูปแบบรายการตามสถานะ Toggle Switch (เปิด/ปิด) */
+
+
+/* -------------------------------------- */
+
+
+/* [ใหม่!] คอมเมนต์: เลือกรายการแม่ (.notification-item) ที่มี Checkbox ภายในอยู่ในสถานะ 'ไม่ถูกเลือก' (ปิด) */
+
+
+/* Selector นี้จะทำงานเมื่อปุ่มสวิตช์อยู่ในสถานะปิด */
+
+.notification-item:has(.toggle-switch input:not(:checked)) {
+    /* คอมเมนต์: ทำให้รายการทั้งหมด (รวมทั้งไอคอน) ดูจางลง */
+    opacity: 0.5;
+    /* คอมเมนต์: ใช้ filter เพื่อแปลงสีให้เป็นขาว-ดำ (Grayscale) */
+    filter: grayscale(80%);
+}
+
+
+/* [ใหม่!] คอมเมนต์: เมื่อสถานะเป็นปิด (Inactive): กำหนดสีข้อความให้หม่นลง */
+
+.notification-item:has(.toggle-switch input:not(:checked)) .item-content,
+.notification-item:has(.toggle-switch input:not(:checked)) .item-schedule {
+    /* คอมเมนต์: สีข้อความที่ดูหม่นลง */
+    color: #95a5a6 !important;
+}
+
+
+/* [ใหม่!] คอมเมนต์: เพิ่มการเปลี่ยนผ่าน (Transition) เพื่อให้การเปิด/ปิดดูนุ่มนวลขึ้น */
+
+.notification-item {
+    /* เพิ่ม transition ให้กับ opacity และ filter */
+    transition: background-color 0.3s, opacity 0.5s, filter 0.5s;
+}
+
+.notification-item .item-content,
+.notification-item .item-schedule {
+    /* เพิ่ม transition ให้กับการเปลี่ยนสีข้อความ */
+    transition: color 0.5s;
+}
+
+
+/* -------------------------------------- */
+
+
+/* รูปแบบ Toggle Switch (ปุ่ม เปิด/ปิด) */
+
+
+/* -------------------------------------- */
+
+
+/* ภาชนะหลักของสวิตช์ */
+
+.toggle-switch {
+    /* แสดงเป็น Inline Block */
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+}
+
+
+/* ซ่อน Checkbox จริง */
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* ตัวสไลเดอร์ (พื้นหลังของสวิตช์) */
+
+.slider {
+    /* ตำแหน่งสัมบูรณ์ครอบคลุมภาชนะหลัก */
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* สีพื้นหลังเมื่อ **ปิด** */
+    background-color: #ccc;
+    /* การเปลี่ยนรูปแบบอย่างราบรื่น */
+    transition: 0.4s;
+}
+
+
+/* วงกลมภายในตัวสไลเดอร์ */
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 17px;
+    width: 17px;
+    /* ตำแหน่งเริ่มต้น (ซ้ายสุด) */
+    left: 4px;
+    bottom: 4px;
+    /* สีของวงกลม */
+    background-color: white;
+    /* การเปลี่ยนรูปแบบอย่างราบรื่น */
+    transition: 0.4s;
+}
+
+
+/* เมื่อ Checkbox ถูกเลือก (สถานะ **เปิด**) */
+
+input:checked+.slider {
+    /* เปลี่ยนสีพื้นหลังเป็นสีหลัก */
+    background-color: #2ecc71;
+    /* สีเขียว */
+}
+
+
+/* เมื่อ Checkbox ถูกเลือก: ให้วงกลมเลื่อนไปทางขวา */
+
+input:checked+.slider:before {
+    /* เลื่อนไปทางขวาตามขนาดของสวิตช์ */
+    transform: translateX(19px);
+}
+
+
+/* ทำให้สไลเดอร์และวงกลมเป็นทรงกลม (แบบ Round) */
+
+.slider.round {
+    border-radius: 25px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}

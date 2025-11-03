@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>ระบบแจ้งเตือน Real-Time</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <div class="main-container">
+
+        <header class="app-header">
+            <h1>ตั้งค่าการแจ้งเตือน 🔔</h1>
+        </header>
+
+        <section class="notification-form-card">
+            <h2>สร้างการแจ้งเตือนใหม่</h2>
+            <form id="notificationForm">
+                <div class="form-control">
+                    <label for="content">เนื้อหาการแจ้งเตือน</label>
+                    <textarea id="content" placeholder="พิมพ์ข้อความแจ้งเตือนที่นี่..." required></textarea>
+                </div>
+
+                <div class="form-control date-time-group">
+                    <div>
+                        <label for="date">วันที่</label>
+                        <input type="date" id="date" required>
+                    </div>
+                    <div>
+                        <label for="time">เวลา</label>
+                        <input type="time" id="time" required>
+                    </div>
+                </div>
+
+                <div class="form-control">
+                    <label for="frequency">ความถี่</label>
+                    <select id="frequency">
+                        <option value="once">ครั้งเดียว</option>
+                        <option value="daily">ทุกวัน</option>
+                        <option value="weekday">วันจันทร์ - ศุกร์</option>
+                        <option value="custom">กำหนดเอง</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn primary-btn">
+                    <i class="fas fa-plus-circle"></i> ADD
+                </button>
+            </form>
+        </section>
+
+        <section class="notification-list-section">
+            <h2>รายการทั้งหมด</h2>
+            <div class="notification-item active">
+                <div class="item-details">
+                    <p class="item-content">ประชุมทีมวันนี้ เวลา 10:30 น. ที่ห้องหลัก!</p>
+                    <p class="item-schedule">ทุกวันจันทร์ | เวลา 10:00 น.</p>
+                </div>
+
+                <div class="item-controls">
+                    <label class="toggle-switch">
+                        <input type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+
+                    <button class="btn secondary-btn cancel-btn">
+                        <i class="fas fa-trash-alt"></i> ยกเลิก
+                    </button>
+                </div>
+            </div>
+
+            <div class="notification-item inactive">
+                <div class="item-details">
+                    <p class="item-content">ออกกำลังกายตอนเย็น เพื่อสุขภาพที่ดี 💪</p>
+                    <p class="item-schedule">วันเว้นวัน | เวลา 18:00 น.</p>
+                </div>
+                <div class="item-controls">
+                    <label class="toggle-switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <button class="btn secondary-btn cancel-btn">
+                        <i class="fas fa-trash-alt"></i> ยกเลิก
+                    </button>
+                </div>
+            </div>
+
+        </section>
+
+    </div>
+
+
+    </div>
+
+    <script>
+        // รอให้ DOM (โครงสร้าง HTML) โหลดเสร็จก่อน
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // 1. เลือกปุ่มทั้งหมดที่มี class เป็น 'cancel-btn'
+            const cancelButtons = document.querySelectorAll('.cancel-btn');
+
+            // 2. วนลูปเพื่อกำหนด Event Listener ให้กับปุ่ม "ยกเลิก" แต่ละปุ่ม
+            cancelButtons.forEach(button => {
+                // เมื่อมีการคลิกที่ปุ่ม
+                button.addEventListener('click', (event) => {
+
+                    event.preventDefault(); // ป้องกันการกระทำเริ่มต้นของปุ่ม
+
+                    // การยืนยันผู้ใช้
+                    const isConfirmed = confirm('คุณแน่ใจหรือไม่ว่าต้องการยกเลิกการแจ้งเตือนนี้?');
+
+                    if (isConfirmed) {
+                        // อ้างอิงถึงรายการแม่ (notification-item)
+                        const itemToRemove = button.closest('.notification-item');
+
+                        if (itemToRemove) {
+                            // ลบรายการออกจาก DOM (หน้าจอ)
+                            itemToRemove.remove();
+                            console.log('รายการแจ้งเตือนถูกยกเลิกและลบออกจากหน้าจอแล้ว!');
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+
+
+</body>
+
+</html>
